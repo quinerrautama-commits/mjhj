@@ -1,5 +1,5 @@
 ================================================================
- WEBSITE MASJID JAMIE' HARAPAN JAYA — PAKET HTML SIAP HOSTING
+ WEBSITE MASJID JAMIE' HARAPAN JAYA — PAKET HTML + CMS PENGURUS
 ================================================================
 
 Isi paket ini:
@@ -10,59 +10,68 @@ Isi paket ini:
   donasi.html       → Informasi donasi
   laporan.html      → Laporan keuangan per program
   kontak.html       → Kontak & peta lokasi
-  admin.html        → PANEL PENGURUS (editor konten)
+  admin/            → PANEL PENGURUS (Decap CMS, berbasis login)
   assets/           → CSS, JavaScript, gambar (img/)
-  data/konten.json  → SEMUA konten website (yang diedit pengurus)
+  data/konten.json  → SEMUA konten website (diatur lewat panel)
 
 ----------------------------------------------------------------
-CARA DEPLOY KE HOSTING (cPanel / Niagahoster / dll)
+CARA DEPLOY KE NETLIFY + AKTIFKAN CMS (cukup sekali)
 ----------------------------------------------------------------
-1. Login ke cPanel hosting Anda.
-2. Buka File Manager → masuk ke folder public_html (atau htdocs).
-3. Upload file ZIP ini, lalu klik kanan → Extract.
-   (Alternatif: extract di komputer, lalu upload semua file & folder
-   via FTP/File Manager ke public_html.)
-4. Selesai! Website bisa dibuka di domain Anda.
-   Pastikan struktur folder tetap: index.html sejajar dengan
-   folder assets/ dan data/.
+LANGKAH 1 — Masukkan file ke GitHub
+  1. Buat akun di github.com (gratis).
+  2. Buat repository baru, misal: website-masjid-jamie
+  3. Upload SEMUA isi ZIP ini ke repository (extract dulu di
+     komputer, lalu drag & drop foldernya ke halaman GitHub,
+     atau gunakan GitHub Desktop).
+
+LANGKAH 2 — Hubungkan Netlify ke GitHub
+  1. Buka app.netlify.com → Add new site → Import an existing
+     project → pilih GitHub → pilih repository tadi.
+  2. Deploy settings: biarkan default (Publish directory kosong).
+  3. Deploy! Website dapat alamat baru, misal:
+     website-masjid-jamie.netlify.app
+
+LANGKAH 3 — Aktifkan login pengurus
+  1. Di dashboard Netlify, buka Site settings → Identity →
+     klik "Enable Identity".
+  2. Di bagian Identity → Services → Git Gateway → klik "Enable".
+  3. Buka tab Identity → Invite users → masukkan email pengurus
+     yang boleh mengedit (bisa lebih dari satu).
+  4. Pengurus menerima email undangan → klik link → buat password.
+
+SELESAI. Panel pengurus ada di:
+  https://website-masjid-jamie.netlify.app/admin
+  (ganti dengan alamat site Anda)
 
 ----------------------------------------------------------------
 CARA EDIT KONTEN (untuk pengurus, tanpa coding)
 ----------------------------------------------------------------
-1. Buka di browser: https://domain-anda.com/admin.html
-   (atau http://domain-anda.com/admin.html)
-2. Pilih tab: Informasi Masjid, Donasi, Program, Kajian Mingguan,
-   Flyer & Banner, Galeri, Laporan Keuangan.
-3. Ubah teks / jadwal / angka sesuai kebutuhan.
-   - Kajian mingguan: update setiap pekan (tema, pemateri, jadwal).
-   - Laporan keuangan: update setiap Jumat (angka per program).
-   - Flyer/banner: upload gambar dulu (lihat bawah), lalu daftarkan.
-4. Klik "⬇ Simpan & Unduh konten.json".
-5. Upload file konten.json hasil unduhan ke hosting,
-   gantikan file lama di folder data/.
-6. Refresh website — konten baru langsung tampil.
+1. Buka https://alamat-site-anda.netlify.app/admin
+2. Login dengan email & password (dari undangan).
+3. Pilih "Semua Konten Website", lalu bagian yang mau diubah:
+   🕌 Informasi Masjid   → nama, alamat, telepon, email
+   💬 Sambutan            → sambutan Ketua DKM
+   💛 Donasi              → rekening, QRIS (upload gambar), WA
+   📋 Program             → tambah/ubah/hapus program
+   📖 Kajian Mingguan     → jadwal, tema, pemateri tiap pekan
+   🖼️ Flyer & Banner      → upload flyer baru
+   📸 Galeri Kegiatan     → upload foto + keterangan
+   💰 Laporan Keuangan    → periode + rincian per program
+4. Klik "Publish" → website otomatis ter-update (1–2 menit).
 
-----------------------------------------------------------------
-CARA MENAMBAH GAMBAR / FLYER
-----------------------------------------------------------------
-1. Upload file gambar (JPG/PNG) ke folder assets/img/ di hosting
-   via File Manager atau FTP.
-2. Di admin.html, tulis nama filenya di kolom gambar, contoh:
-     assets/img/flyer-kajian-jumat.jpg
-3. Simpan & upload konten.json seperti biasa.
+Tips:
+- Kajian mingguan: update setiap pekan (tema & pemateri).
+- Laporan keuangan: update setiap Jumat (angka per program).
+- Gambar/flyer/QRIS: klik kolom gambar → upload langsung.
 
 ----------------------------------------------------------------
 CATATAN PENTING
 ----------------------------------------------------------------
-- Website membaca data dari data/konten.json, jadi halaman harus
-  dibuka lewat hosting/server (http), BUKAN dengan klik ganda file
-  di komputer (file://). Untuk tes di komputer, jalankan:
-     python3 -m http.server
-  lalu buka http://localhost:8000
-- Jangan hapus/ubah nama folder assets/ dan data/.
-- Halaman admin.html sebaiknya hanya diketahui pengurus.
-- Info rekening/QRIS/WhatsApp masih kosong — isi lewat tab Donasi
-  di admin.html setelah mendapat info resmi dari pengurus.
+- Website membaca data dari data/konten.json — JANGAN edit file
+  ini manual; selalu lewat panel /admin agar formatnya aman.
+- Info rekening/QRIS/WhatsApp masih kosong — isi lewat panel
+  Donasi setelah mendapat info resmi dari pengurus.
+- Halaman /admin hanya untuk pengurus (butuh login).
 
 Selamat menggunakan! Barakallahu fiikum.
 ================================================================
