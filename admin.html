@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Pengurus — Masjid Jamie' Harapan Jaya</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo.jpg">
+</head>
+<body data-halaman="admin.html">
+
+<header class="top">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <img data-logo src="assets/img/logo.jpg" alt="Logo Masjid Jamie' Harapan Jaya">
+      <span><span class="nama" data-nama-masjid>Masjid Jamie' Harapan Jaya</span><br><span class="sub">Panel Pengurus</span></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+    <nav class="menu" id="menuUtama"></nav>
+  </div>
+</header>
+
+<main>
+  <div class="admin-bungkus">
+    <div class="judul-bagian" style="margin-bottom:2rem">
+      <div class="kicker">Khusus Pengurus</div>
+      <h2>Editor Konten Website</h2>
+      <div class="garis-emas"></div>
+    </div>
+
+    <div class="peringatan">
+      <strong>📌 Cara pakai:</strong>
+      <ol style="margin:.6rem 0 0 1.2rem">
+        <li>Ubah konten lewat formulir di bawah (teks, jadwal, angka, gambar).</li>
+        <li>Klik <strong>"Simpan &amp; Unduh konten.json"</strong> di bagian bawah.</li>
+        <li>Upload file <strong>konten.json</strong> hasil unduhan ke hosting, gantikan file lama di folder <strong>data/</strong>.</li>
+        <li>Selesai — website langsung menampilkan konten terbaru.</li>
+      </ol>
+      <p style="margin-top:.6rem"><strong>Gambar:</strong> upload dulu gambar/flyer ke folder <strong>assets/img/</strong> di hosting (via cPanel / FTP), lalu tulis nama filenya di kolom gambar, contoh: <code>assets/img/flyer-kajian.jpg</code>.</p>
+    </div>
+
+    <div class="admin-nav" id="tabNav"></div>
+    <div id="tabIsi"></div>
+
+    <div class="panel">
+      <h3>💾 Simpan Perubahan</h3>
+      <p style="margin-bottom:1rem;color:var(--abu);font-size:.92rem">Perubahan tersimpan ke file <strong>data/konten.json</strong> yang Anda unduh, lalu upload ke hosting.</p>
+      <button class="btn emas" id="btnUnduh" style="font-size:1rem;padding:.9rem 2rem">⬇ Simpan &amp; Unduh konten.json</button>
+      <span id="statusSimpan" style="margin-left:1rem;color:var(--hijau);font-weight:600"></span>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-bawah">© <span id="tahunFooter"></span> <span data-nama-masjid></span> • Panel Pengurus DKM</div>
+</footer>
+
+<script src="assets/js/admin.js"></script>
+</body>
+</html>
